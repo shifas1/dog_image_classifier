@@ -3,7 +3,7 @@
 # */AIPND-revision/intropyproject-classify-pet-images/get_pet_labels.py
 #                                                                             
 # PROGRAMMER: Shifa S
-# DATE CREATED: 22-11-2024                            
+# DATE CREATED: 8-12-2024                            
 # REVISED DATE: 
 # PURPOSE: Create the function get_pet_labels that creates the pet labels from 
 #          the image's filename. This function inputs: 
@@ -42,42 +42,30 @@ def get_pet_labels(image_dir):
     """
     # Replace None with the results_dic dictionary that you created with this
     # function
-   
-    filename_list = listdir(image_dir)
+    filenames = listdir(image_dir)
     
-    results_dic = dict()
+    # Initialize an empty dictionary to store results
+    results_dict = {}
     
-    for filename in filename_list:
-        if filename not in results_dic:
-            # Sets pet_image variable to a filename 
-            pet_image = filename
-
-            # Sets string to lower case letters
-            low_pet_image = pet_image.lower()
-
-            # Splits lower case string by _ to break into words 
-            word_list_pet_image = low_pet_image.split("_")
-
-            # Create pet_name starting as empty string
-            pet_name = ""
-
-            # Loops to check if word in pet name is only
-            # alphabetic characters - if true append word
-            # to pet_name separated by trailing space 
-            for word in word_list_pet_image:
-                if word.isalpha():
-                    pet_name += word + " "
-
-            # Strip off starting/trailing whitespace characters 
-            pet_name = pet_name.strip()
+    # Process each filename in the directory
+    for file in filenames:
+        # Check if the filename is already in the dictionary
+        if file not in results_dict:
+            # Convert the filename to lowercase
+            lower_case_name = file.lower()
             
-            results_dic[filename] = [pet_name]
+            # Split the filename into words using underscores as delimiters
+            words = lower_case_name.split("_")
+            
+            # Create a pet name by filtering out non-alphabetic components
+            pet_name = " ".join([word for word in words if word.isalpha()])
+            
+            # Add the filename and its corresponding pet name to the dictionary
+            results_dict[file] = [pet_name.strip()]
         else:
-            print("** Warning: Key=", filename, 
-                "already exists in results_dic with value =", 
-                results_dic[filename])
-
-    return results_dic
+            print(f"** Warning: '{file}' is already a key in results_dict with value: {results_dict[file]}")
+    
+    return results_dict
 
    
 

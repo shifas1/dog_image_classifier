@@ -2,25 +2,23 @@ Questions regarding Uploaded Image Classification:
 
 1. Did the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed? If not, report the differences in the classifications.
 
-Answer: alexnet: yes
-	    resnet: yes
-	    vgg: yes
-
+Answer: AlexNet: Yes
+        ResNet: Yes
+        VGG: Yes
 
 2. Did each of the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed of dog as that model architecture classified Dog_02.jpg? If not, report the differences in the classifications.
 
-Answer:  alexnet: no -> Dog_01.jpg - golden retriever (correct); Dog_02.jpg - tub, vat (false)
-	     resnet: yes
-	     vgg: yes
+Answer:   AlexNet: No. For the first picture Dog_01.jpg the model guessed the right breed  which is golden retriever and for the second picture Dog_02.jpg it confused between  ‘tub’ or ‘vat’. 
+         ResNet: Yes. This is because this model gave the same  breed for both the images as an output. 
+         VGG: Yes. In the same  manner, this model also provided the same breed names for both of the images. 
 
 
 3. Did the three model architectures correctly classify Animal_Name_01.jpg and Object_Name_01.jpg to not be dogs? If not, report the misclassifications.
 
-Answer:  alexnet: yes
-         resnet: yes
-         vgg: yes
-
+Answer:  AlexNet: Yes
+        ResNet: Yes
+        VGG: Yes
 
 4. Based upon your answers for questions 1. - 3. above, select the model architecture that you feel did the best at classifying the four uploaded images. Describe why you selected that model architecture as the best on uploaded image classification.
 
-Answer: In this certain case, I would use the ResNet. Both the ResNet and the VGG offer the same accuracy and perform better , but ResNet is faster so i use this.
+Answer:  From these results, it can be seen that ResNet performs best. It provided a consistent level  of accuracy in predicting the breeds of the dogs in both Dog_01. jpg and  Dog_02. jpg and also was able to identify the images that were not of dogs as not falling within the  dog category. Although VGG also provided similar accuracy scores, ResNet is usually faster and less complex  to compute, and thus more suitable for this kind of application.

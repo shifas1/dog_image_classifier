@@ -3,8 +3,8 @@
 # */AIPND-revision/intropyproject-classify-pet-images/adjust_results4_isadog.py
 #                                                                             
 # PROGRAMMER: Shifa S
-# DATE CREATED: 23-11-2024                                
-# REVISED DATE: 
+# DATE CREATED: 20-11-2024                                
+# REVISED DATE: 08-12-20
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
 #          dictionary to indicate whether or not the pet image label is of-a-dog, 
 #          and to indicate whether or not the classifier image label is of-a-dog.
@@ -67,21 +67,20 @@ def adjust_results4_isadog(results_dic, dogfile):
     Returns:
            None - results_dic is mutable data type so no return needed.
     """           
-    dognames_dict = dict()
+    dognames_dict = {}
 
-    # Read dog names from the file
     with open(dogfile, "r") as f:
-        line = f.readline()
-        
-        while line != "":
-            line = line.lower().rstrip('\n')  # Normalize the dog name
-            if line not in dognames_dict:
-                dognames_dict[line] = 1  # Add the dog name to the dictionary
+        for line in f:
+            dog_name = line.strip().lower()
+            if dog_name not in dognames_dict:
+                dognames_dict[dog_name] = 1
             else:
-                print(f"** Warning: Key = '{line}' already exists in dognames_dict")
-            line = f.readline()  # Read the next line
-    
+                print(f"** Warning: Key = '{dog_name}' already exists in dognames_dict")
+
     for filename, values in results_dic.items():
-        pet_label_is_dog = 1 if values[0] in dognames_dict else 0
-        classifier_label_is_dog = 1 if values[1] in dognames_dict else 0
-        values.extend((pet_label_is_dog, classifier_label_is_dog))
+        pet_label_is_dog = 1 if dognames_dict.get(values[0]) else 0
+        classifier_label_is_dog = 1 if dognames_dict.get(values[1]) else 0
+        values.extend([pet_label_is_dog, classifier_label_is_dog])
+
+
+

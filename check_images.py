@@ -29,7 +29,7 @@ from time import time, sleep
 # Imports print functions that check the lab
 from print_functions_for_lab_checks import *
 
-# Imports functions created for this program
+
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
 from classify_images import classify_images
@@ -120,10 +120,10 @@ def main():
     end_time = time()
     
     # TODO 0: Computes overall runtime in seconds & prints it in hh:mm:ss format
-    tot_time = end_time - start_time
+    total_time = end_time - start_time
     print("\n** Total Elapsed Runtime:",
-          str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"
-          +str(int((tot_time%3600)%60)) )
+          str(int((total_time/3600)))+":"+str(int((total_time%3600)/60))+":"
+          +str(int((total_time%3600)%60)) )
     
 
 # Call to main function to run the program

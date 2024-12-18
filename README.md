@@ -9,7 +9,6 @@ This project uses Convolutional Neural Networks (CNNs) to classify dog images an
 - [Requirements](#requirements)
 - [How to Run the Project](#how-to-run-the-project)
 - [Output Example](#output-example)
-- [Project Structure](#project-structure)
 - [Key Logic](#key-logic)
 - [Contribution](#contribution)
 - [License](#license)
@@ -80,9 +79,8 @@ Place all image files in an appropriate directory:
 ### Run the Project:
 Execute the Python script:
 ```bash
-python classify_dogs.py --model alexnet --data_dir ./images
+python check_images.py
 ```
-Replace `--model` with your desired CNN architecture (alexnet, vgg, resnet, etc.).
 
 ## Output Example
 Sample output for AlexNet architecture:

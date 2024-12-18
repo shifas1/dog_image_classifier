@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Shifa s
 # DATE CREATED: 23-11-24
-# REVISED DATE: 08-12-2024
+# REVISED DATE: 18-12-2024
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
 #          should also allow the user to be able to print out cases of misclassified
@@ -62,29 +62,21 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    
-    
     print(f"Using the {model} CNN model architecture")
     print(f"Number of Images: {results_stats_dic['n_images']}")
     print(f"Number of Dog Images: {results_stats_dic['n_dogs_img']}")
     print(f"Number of 'Not-a' Dog Images: {results_stats_dic['n_notdogs_img']}")
-
-    print(f"{results_stats_dic['pct_correct_dogs']}% Correctly Classified Dogs")
-    print(f"{results_stats_dic['pct_correct_breed']}% Correctly Classified Breeds")
-    print(f"{results_stats_dic['pct_correct_notdogs']}% Correctly Classified 'Not-a' Dog Images")
-    print(f"{results_stats_dic['pct_match']}% Match Between Labels")
-
-    if print_incorrect_dogs:
-        print("\nMisclassified Dog Images:")
-        for image, values in results_dic.items():
-            if sum([int(values[3]), int(values[4])]) == 1:
-                print(f"Image: {image}, Classifier Label: {values[1]}")
-
-    if print_incorrect_breed:
+    print(f"{results_stats_dic['pct_correct_dogs']:.1f}% Correctly Classified Dogs")
+    print(f"{results_stats_dic['pct_correct_breed']:.1f}% Correctly Classified Breeds")
+    print(f"{results_stats_dic['pct_correct_notdogs']:.1f}% Correctly Classified 'Not-a' Dog Images")
+    print(f"{results_stats_dic['pct_match']:.1f}% Match Between Labels")
+    
+    if print_incorrect_breed and results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed']:
         print("\nMisclassified Breeds of Dogs:")
         for image, values in results_dic.items():
             if sum([int(values[3]), int(values[4])]) == 2 and not values[2]:
                 print(f"Image: {image}, Classifier Label: {values[1]}")
+    
 
 
                 

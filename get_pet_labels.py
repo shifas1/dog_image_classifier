@@ -49,6 +49,10 @@ def get_pet_labels(image_dir):
     
     # Process each filename in the directory
     for file in filenames:
+        # Skip dotfiles (files that start with '.')
+        if file.startswith('.'):
+            continue
+        
         # Check if the filename is already in the dictionary
         if file not in results_dict:
             # Convert the filename to lowercase

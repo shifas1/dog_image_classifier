@@ -77,7 +77,7 @@ def adjust_results4_isadog(results_dic, dogfile):
             else:
                 print(f"** Warning: Key = '{dog_name}' already exists in dognames_dict")
 
-    for filename, values in results_dic.items():
+    for values in results_dic.values():
         pet_label_is_dog = 1 if dognames_dict.get(values[0]) else 0
         classifier_label_is_dog = 1 if dognames_dict.get(values[1]) else 0
         values.extend([pet_label_is_dog, classifier_label_is_dog])

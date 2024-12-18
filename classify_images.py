@@ -22,6 +22,7 @@
 ##
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier 
+import os.path
 
 # TODO 3: Define classify_images function below, specifically replace the None
 #       below by the function definition of the classify_images function. 
@@ -67,7 +68,7 @@ def classify_images(images_dir, results_dic, model):
     """
 
     for filename, label in results_dic.items():
-        image_path = str(images_dir) + "/" + filename
+        image_path = os.path.join(images_dir, filename)
         image_classification = classifier(image_path, model).strip().lower()
         label += [image_classification]
         match_status = 1 if label[0] in image_classification else 0
